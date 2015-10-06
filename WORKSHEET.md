@@ -264,26 +264,28 @@ fancy();
 
 > output:
 >-
->-
+>-  I can run
 >-
 > why?
 >-
->-
->-
->-
+>-  1. function fancy() {} is declared in global scope
+>-  2. function run() {} is declared in function run() scope
+>-  3. var run is declared
+>-  4. fancy() is called
+>-  5. run is initialized with a value of false
 >-
 >-
 > rewrite without hoisting
 >-
+>-  function fancy (arg1, arg2) {}
 >-
+>- 		function run() {}
 >-
+>-  var run;
 >-
+>-	fancy();
 >-
->-
->-
->-
->-
->-
+>-  run = false;
 >-
 >-
 
@@ -307,25 +309,29 @@ fancy();
 
 > output:
 >-
->-
+>- I can't run
 >-
 > why?
 >-
->-
->-
->-
+>-  1. function fancy() {} declared in global scope
+>-  2. var run declared in function fancy() scope
+>-  3. var run declared in global scope
+>-  4. fancy() called
+>-  5. run initialized with value of function() in function fancy() scope
+>-  6. run initialized with value of false in global scope
 >-
 >-
 > rewrite without hoisting
 >-
+>-  function fancy() {}
+>-    var run;
 >-
+>-  var run;
 >-
+>-  fancy(); // 'I can't run'
 >-
+>-  run = function () {}
 >-
->-
->-
->-
->-
->-
+>-  run = false;
 >-
 >-
