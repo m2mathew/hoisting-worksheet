@@ -1,25 +1,31 @@
-function test() {
-    console.log(a);
-    console.log(foo());
+var run = false;
 
-    var a = 1;
-    function foo() {
-        return 2;
+function fancy(arg1, arg2) {
+    if(run) {
+        console.log('I can run');
+    }
+    else {
+        console.log('I can\'t run');
+    }
+
+    function run() {
+        console.log('Will I run?');
     }
 }
-
-test();
-
+fancy();
 
 
+////////
 
-function test() {}
 
-    function foo() {}
-    var a;
+function fancy (arg1, arg2) {}
 
-test();
+var run;
 
-console.log(a); // is undefined
+    function run() {}
 
-console.log(foo()); // is 2
+fancy();
+
+run = false;
+
+

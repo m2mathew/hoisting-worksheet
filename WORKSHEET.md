@@ -22,6 +22,7 @@ var myvar = 'my value';
 >-
 > why?
 >-
+>-    // self-executing function
 >-	The function will hoist to the top of the global scope
 >-	Then the declaration of 'myvar' gets hoisted to the top of the function
 >-	Then the console.log is run before myvar has been assigned a value
@@ -215,25 +216,30 @@ test();
 
 > output:
 >-
->-
+>- undefined
+>- aloha
 >-
 > why?
 >-
->-
->-
->-
+>- 	1. function () {} declaration is hoisted to top of the global scope
+>-	2. function foo() {} is declared at the top of the function () {}
+>-	3. var bar is declared in the scope of function () {}
+>-	4. bar is logged to the console
+>- 	5. foo() is called and returns 'aloha' to the console
+>-  6. bar is initialized with a value of 1
+>-  7. baz is initialized with a value of 2 (but never declared)
 >-
 >-
 > rewrite without hoisting
 >-
->-
->-
->-
->-
->-
->-
->-
->-
+>-    // self-executing function
+>-  function() {}
+>-		function foo() {}
+>-	var bar;
+>-  console.log(bar); // undefined
+>-  foo(); // aloha
+>-  bar = 1;
+>-  baz = 2;
 >-
 >-
 >-
