@@ -1,16 +1,14 @@
-var message = 'Hello world';
+function test() {
+    console.log(a);
+    console.log(foo());
 
-function saySomething() {
-    console.log(message);
-    var message = 'Foo bar';
+    var a = 1;
+    function foo() {
+        return 2;
+    }
 }
-saySomething();
+
+test();
 
 
-
-
-
-function saySomething() {}
-    var message; // in the function
-
-var message;
+function test() {}

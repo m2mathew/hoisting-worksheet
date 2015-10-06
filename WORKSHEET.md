@@ -70,9 +70,8 @@ test();
 >-	3. flag is falsey (it has not been defined), so it goes to the else statement
 >-	4. flag is assigned a value but had never been declared - it is skipped
 >-	5. 'Switch flag from false to true' is logged to the console
->-	6.
+>-	6. the variable flag is initialized with a value of 'true'
 >-	7. the test function is called
->-	8. the variable flag is initialized with a value of 'true'
 >-
 >-
 > rewrite without hoisting
@@ -106,26 +105,30 @@ saySomething();
 
 > output:
 >-
->-
+>-	undefined
 >-
 > why?
 >-
->-
->-
->-
+>-	1. function declaration is hoisted to top of global scope
+>-	2. inside function var message declaration is hoisted to top of function scope
+>-  3. console.log(message); which will evaluate to undefined
+>-	4. message is initialized as 'Foo bar'
+>-	5. var message is declared in the global scope
+>-	6. message is initialized as 'Hello world'
+>-  7. function is called
 >-
 >-
 > rewrite without hoisting
 >-
+>-	function saySomething() {}
+>-    	var message; // in the function
+>-    	console.log(message);
+>-    	message = 'Foo bar';
 >-
+>-	var message;
+>-	message = 'Hello world';
 >-
->-
->-
->-
->-
->-
->-
->-
+>-	saySomething();
 >-
 >-
 
@@ -141,16 +144,16 @@ saySomething();
 
 > output:
 >-
->-
+>-  Hello world
 >-
 > why?
 >-
+>-	I have no idea.
+>-	I don't think I am understanding the order of operations here!
+>-	The only difference is that the console.log(); is run before any locally-scoped hoisting within the function
+>-  But I thought that the entire function gets evaluated before anything is run...
+>-	(but it is just the function declaration and not the entire function?  ...that won't explain some of these others!)
 >-
->-
->-
->-
->-
-
 
 ```js
 function test() {
