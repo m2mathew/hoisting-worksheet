@@ -8,42 +8,42 @@
 5. Re-write the code snippet to maintain the same output, but to avoid hoisting.
 
 ```js
-var myvar = 'my value'; 
-  
-(function() { 
+var myvar = 'my value';
+
+(function() {
 	console.log(myvar);
-	var myvar = 'local value'; 
+	var myvar = 'local value';
 })();
 ```
 
 > output:
 >-
->-
+>-  undefined
 >-
 > why?
 >-
->-
->-
->-
->-
+>-	The function will hoist to the top of the global scope
+>-	Then the declaration of 'myvar' gets hoisted to the top of the function
+>-	Then the console.log is run before myvar has been assigned a value
+>-	So the variable 'myvar' exists but has yet to be initialized
+>-	Thus, undefined
 >-
 > rewrite without hoisting
 >-
+>-  (function() {
+>-		var myvar;
+>-		console.log(myvar);
+>-		myvar = 'local value';
+>-	}) ();
 >-
->-
->-
->-
->-
->-
->-
->-
+>-	var myvar = 'my value';
 >-
 >-
 >-
 
 ```js
-var flag = true; 
-  
+var flag = true;
+
 function test() {
 	if(flag) {
 		var flag = false;
@@ -59,33 +59,44 @@ test();
 
 > output:
 >-
->-
+>-  Switch flag from false to true (logged to the console)
 >-
 > why?
 >-
->-
->-
->-
+>-	1. The function is hoisted to the top of the global scope
+>- 	2. the variable flag is then declared
+
+>-  2. function body is run straight down
+>-	3. flag is falsey (it has not been defined), so it goes to the else statement
+>-	4. flag is assigned a value but had never been declared - it is skipped
+>-	5. 'Switch flag from false to true' is logged to the console
+>-	6.
+>-	7. the test function is called
+>-	8. the variable flag is initialized with a value of 'true'
 >-
 >-
 > rewrite without hoisting
 >-
->-
->-
->-
->-
->-
->-
->-
->-
->-
+>-	function test() {
+>-		if(flag) {
+>-			var flag = false;
+>-			console.log('Switch flag from true to false');
+>-		}
+>-		else {
+>-			flag = true;
+>-			console.log('Swtich flag from false to true');
+>-		}
+>-	}
+>-	var flag;
+>-  test();
+>-	flag = true;
 >-
 >-
 
 
 ```js
-var message = 'Hello world'; 
-  
+var message = 'Hello world';
+
 function saySomething() {
 	console.log(message);
 	var message = 'Foo bar';
@@ -119,8 +130,8 @@ saySomething();
 >-
 
 ```js
-var message = 'Hello world'; 
-  
+var message = 'Hello world';
+
 function saySomething() {
 	console.log(message);
 	message = 'Foo bar';
@@ -151,7 +162,7 @@ function test() {
 		return 2;
 	}
 }
- 
+
 test();
 ```
 
