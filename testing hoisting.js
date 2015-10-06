@@ -11,4 +11,15 @@ function test() {
 test();
 
 
+
+
 function test() {}
+
+    function foo() {}
+    var a;
+
+test();
+
+console.log(a); // is undefined
+
+console.log(foo()); // is 2

@@ -171,26 +171,31 @@ test();
 
 > output:
 >-
->-
+>- 	undefined
+>-	2
 >-
 > why?
 >-
->-
->-
->-
->-
+>-	1. function test() {} is declared in global scope
+>-  2. function foo() {} is declared at top of function test() scope
+>-	3. var a is declared below function foo() inside of function test()
+>- 	4. function test() is called
+>-	5. console.log(a); evalutes to undefined
+>- 	6. console.log(foo()); evaluates to 2 as it is successfull executed
+>-	7. a is initialized with a value of 1
 >-
 > rewrite without hoisting
 >-
+>-  function test() {}
 >-
+>-    function foo() {}
+>-    var a;
 >-
+>-  test();
 >-
+>-  console.log(a); // is undefined
 >-
->-
->-
->-
->-
->-
+>-  console.log(foo()); // is 2
 >-
 >-
 
