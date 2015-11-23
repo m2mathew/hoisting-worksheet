@@ -23,21 +23,22 @@ var myvar = 'my value';
 > why?
 >-
 >-    // self-executing function
->-	The function will hoist to the top of the global scope
->-	Then the declaration of 'myvar' gets hoisted to the top of the function
->-	Then the console.log is run before myvar has been assigned a value
->-	So the variable 'myvar' exists but has yet to be initialized
->-	Thus, undefined
+>-	1 The function will hoist to the top of the global scope
+>-	2 Then the declaration of 'myvar' gets hoisted to the top of the function
+>-	3 Then the console.log is run before myvar has been assigned a value
+>-	4 So the variable 'myvar' exists but has yet to be initialized
+>-	5 Thus, undefined
 >-
 > rewrite without hoisting
+>-
+>- 	var myvar;
+>-	myvar = 'my value';
 >-
 >-  (function() {
 >-		var myvar;
 >-		console.log(myvar);
 >-		myvar = 'local value';
 >-	}) ();
->-
->-	var myvar = 'my value';
 >-
 >-
 >-
@@ -66,7 +67,6 @@ test();
 >-
 >-	1. The function is hoisted to the top of the global scope
 >- 	2. the variable flag is then declared
-
 >-  2. function body is run straight down
 >-	3. flag is falsey (it has not been defined), so it goes to the else statement
 >-	4. flag is assigned a value but had never been declared - it is skipped
@@ -149,12 +149,11 @@ saySomething();
 >-
 > why?
 >-
->-	I have no idea.
->-	I don't think I am understanding the order of operations here!
->-	The only difference is that the console.log(); is run before any locally-scoped hoisting within the function
->-  But I thought that the entire function gets evaluated before anything is run...
->-	(but it is just the function declaration and not the entire function?  ...that won't explain some of these others!)
->-
+>-	1. function declared
+>- 	2. var message declared
+>-	3. message initialized with a value of 'Hello World'
+>-	4. function runs and logs "Hellow World" to the console
+>-	5. message is re-assigned a value of "Foo bar"
 
 ```js
 function test() {
@@ -271,8 +270,8 @@ fancy();
 >-  1. function fancy() {} is declared in global scope
 >-  2. function run() {} is declared in function run() scope
 >-  3. var run is declared
->-  4. fancy() is called
->-  5. run is initialized with a value of false
+>-  4. run is initialized with a value of false
+>-  5. fancy() is called but the function run() overtakes the global var run
 >-
 >-
 > rewrite without hoisting

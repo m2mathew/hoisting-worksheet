@@ -1,5 +1,9 @@
 # JavaScript Hoisting Practice
 
+Assignment from The Iron Yard-Austin
+
+Week 7 - day 25
+
 ## Description
 A few sample problems to brush up on Javascript hoisting
 
@@ -36,7 +40,7 @@ After completing this assignment, you be able to effectively use
 
 
 ## Normal Mode
-Print out a copy of [WORKSHEET.md](/WORKSHEET.md). Using pen and paper, fill in the answers to each question on the worksheet. After answering each question, run the code to see if you go it correct. Finally, refactor each problem to prevent hoisting from occurring.
+Print out a copy of [WORKSHEET.md](https://github.com/TIY-Austin-Front-End-Engineering/hoisting-worksheet/blob/master/WORKSHEET.md). Using pen and paper, fill in the answers to each question on the worksheet. After answering each question, run the code to see if you go it correct. Finally, refactor each problem to prevent hoisting from occurring.
 
 
 ## Notes
